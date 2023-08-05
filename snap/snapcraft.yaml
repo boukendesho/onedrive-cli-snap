@@ -1,0 +1,48 @@
+name: onedrive-cli 
+base: core22
+adopt-info: onedrive
+summary: Free OneDrive Client for Linux 
+description: |
+  A free Microsoft OneDrive Client which supports OneDrive Personal, OneDrive for Business, OneDrive for Office365 and SharePoint.
+
+
+  Please note that this is not an officially maintained package. Use at your own risk.
+
+architectures:
+  - build-on: amd64
+
+grade: stable
+confinement: strict
+
+apps:
+  onedrive-cli:
+    command: usr/local/bin/onedrive
+    plugs:
+      - network
+      - home
+parts:
+  onedrive:
+    plugin: autotools
+    source-type: git
+    source: https://github.com/abraunegg/onedrive
+    source-tag: 'v2.4.25'
+    source-depth: 1
+    build-packages:
+      - ldc
+      - libcurl4-openssl-dev
+      - libsqlite3-dev
+      - pkg-config
+      - libnotify-dev
+    override-pull: |
+      craftctl default
+      craftctl set version=$(git describe --tags --abbrev=0 | tr -d 'v')
+    autotools-configure-parameters:
+      - --enable-notifications
+    stage-packages:
+      - libcurl4
+      - libphobos2-ldc-shared98
+      - libgdk-pixbuf-2.0-0
+      - libjpeg-turbo8
+      - libnotify4
+    
+    

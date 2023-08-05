@@ -1,5 +1,8 @@
 ## onedrive-cli-snap
-[Onedrive](https://github.com/abraunegg/onedrive) 
+[![onedrive-cli](https://snapcraft.io/onedrive-cli/badge.svg)](https://snapcraft.io/onedrive-cli)
+
+[Upstream Project Link](https://github.com/abraunegg/onedrive) 
+
 A free Microsoft OneDrive Client which supports OneDrive Personal, OneDrive for Business, OneDrive for Office365 and SharePoint.
 
 Please note that this is `not` an officially maintained package. Use at your own risk.
@@ -35,7 +38,7 @@ Due to the packaging with Snap, the default paths are different.
 
 ```bash
 $ mkdir -p ~/.config/systemd/user/
-$ wget onedrive-cli.service -O ~/.config/systemd/user/
+$ wget https://raw.githubusercontent.com/boukendesho/onedrive-cli-snap/main/onedrive-cli.service -O ~/.config/systemd/user/onedrive-cli.service
 $ systemctl --user daemon-reload
 $ systemctl --user enable --now onedrive-cli.service
 # check service status

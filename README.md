@@ -13,6 +13,10 @@ Due to my limited time and knowledge, problems might not receive fixes.
 
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/onedrive-cli)
 
+## Requirements
+
+[Snap installed](https://snapcraft.io/docs/installing-snapd)
+
 ## Install
 
 ```bash

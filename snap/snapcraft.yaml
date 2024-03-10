@@ -25,7 +25,7 @@ parts:
     plugin: autotools
     source-type: git
     source: https://github.com/abraunegg/onedrive
-    source-tag: 'v2.4.25'
+    source-tag: 'v2.5.0-rc1'
     source-depth: 1
     build-packages:
       - ldc
@@ -44,5 +44,3 @@ parts:
       - libgdk-pixbuf-2.0-0
       - libjpeg-turbo8
       - libnotify4
-    
-    

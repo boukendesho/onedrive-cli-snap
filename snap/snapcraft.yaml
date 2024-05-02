@@ -17,6 +17,7 @@ confinement: strict
 apps:
   onedrive-cli:
     command: usr/local/bin/onedrive
+    completer: usr/bin/complete.bash
     plugs:
       - network
       - home
@@ -25,7 +26,7 @@ parts:
     plugin: autotools
     source-type: git
     source: https://github.com/abraunegg/onedrive
-    source-tag: 'v2.5.0-rc1'
+    source-tag: 'v2.5.0-rc2'
     source-depth: 1
     build-packages:
       - ldc
@@ -36,6 +37,9 @@ parts:
     override-pull: |
       craftctl default
       craftctl set version=$(git describe --tags --abbrev=0 | tr -d 'v')
+      # keep bash completion file
+      mkdir -p $CRAFT_PART_INSTALL/usr/bin/
+      cp $CRAFT_PART_SRC/contrib/completions/complete.bash $CRAFT_PART_INSTALL/usr/bin/
     autotools-configure-parameters:
       - --enable-notifications
     stage-packages:
@@ -44,3 +48,8 @@ parts:
       - libgdk-pixbuf-2.0-0
       - libjpeg-turbo8
       - libnotify4
+    prime:
+      - -lib
+      - -usr/lib/systemd
+      - -usr/local/etc
+      - -usr/local/share

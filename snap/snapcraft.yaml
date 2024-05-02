@@ -37,9 +37,9 @@ parts:
     override-pull: |
       craftctl default
       craftctl set version=$(git describe --tags --abbrev=0 | tr -d 'v')
-      # keep bash completion file
+      # keep bash completion file, change completion name from 'onedrive' to 'onedrive-cli'
       mkdir -p $CRAFT_PART_INSTALL/usr/bin/
-      cp $CRAFT_PART_SRC/contrib/completions/complete.bash $CRAFT_PART_INSTALL/usr/bin/
+      sed 's/onedrive/onedrive-cli/g' $CRAFT_PART_SRC/contrib/completions/complete.bash > $CRAFT_PART_INSTALL/usr/bin/complete.bash
     autotools-configure-parameters:
       - --enable-notifications
     stage-packages:

@@ -26,7 +26,7 @@ parts:
     plugin: autotools
     source-type: git
     source: https://github.com/abraunegg/onedrive
-    source-tag: 'v2.5.1'
+    source-tag: 'v2.5.2'
     source-depth: 1
     build-packages:
       - ldc

@@ -1,5 +1,5 @@
 name: onedrive-cli 
-base: core22
+base: core24
 adopt-info: onedrive
 summary: Free OneDrive Client for Linux 
 description: |
@@ -8,8 +8,9 @@ description: |
 
   Please note that this is not an officially maintained package. Use at your own risk.
 
-architectures:
-  - build-on: amd64
+platforms:
+  amd64:
+  arm64:
 
 grade: stable
 confinement: strict
@@ -17,7 +18,7 @@ confinement: strict
 apps:
   onedrive-cli:
     command: usr/local/bin/onedrive
-    completer: usr/bin/complete.bash
+    completer: usr/local/bin/complete.bash
     plugs:
       - network
       - home
@@ -38,13 +39,13 @@ parts:
       craftctl default
       craftctl set version=$(git describe --tags --abbrev=0 | tr -d 'v')
       # keep bash completion file, change completion name from 'onedrive' to 'onedrive-cli'
-      mkdir -p $CRAFT_PART_INSTALL/usr/bin/
-      sed 's/onedrive/onedrive-cli/g' $CRAFT_PART_SRC/contrib/completions/complete.bash > $CRAFT_PART_INSTALL/usr/bin/complete.bash
+      mkdir -p $CRAFT_PART_INSTALL/usr/local/bin/
+      sed 's/onedrive/onedrive-cli/g' $CRAFT_PART_SRC/contrib/completions/complete.bash > $CRAFT_PART_INSTALL/usr/local/bin/complete.bash
     autotools-configure-parameters:
       - --enable-notifications
     stage-packages:
-      - libcurl4
-      - libphobos2-ldc-shared98
+      - libcurl4t64
+      - libphobos2-ldc-shared106
       - libgdk-pixbuf-2.0-0
       - libjpeg-turbo8
       - libnotify4

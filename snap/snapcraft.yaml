@@ -22,6 +22,7 @@ apps:
     plugs:
       - network
       - home
+      - desktop
 parts:
   onedrive:
     plugin: autotools

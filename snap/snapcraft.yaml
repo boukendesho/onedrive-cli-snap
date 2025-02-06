@@ -19,12 +19,35 @@ apps:
   onedrive-cli:
     command: usr/local/bin/onedrive
     completer: usr/local/bin/complete.bash
+    environment:
+      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/usr/local/lib
     plugs:
       - network
       - home
       - desktop
+
 parts:
+  curl:
+    plugin: autotools
+    source-type: git
+    source: https://github.com/curl/curl
+    source-tag: 'curl-8_12_0'
+    source-depth: 1
+    build-packages:
+      - libssl-dev
+      - nghttp2
+      - libnghttp2-dev
+      - libpsl-dev
+    autotools-configure-parameters:
+      - --with-openssl
+      - --with-nghttp2
+      - --enable-versioned-symbols
+    stage-packages:
+      - libnghttp2-14
+      - libpsl5t64
+      
   onedrive:
+    after: [curl]
     plugin: autotools
     source-type: git
     source: https://github.com/abraunegg/onedrive
@@ -32,7 +55,7 @@ parts:
     source-depth: 1
     build-packages:
       - ldc
-      - libcurl4-openssl-dev
+      # - libcurl4-openssl-dev
       - libsqlite3-dev
       - pkg-config
       - libnotify-dev
@@ -45,7 +68,7 @@ parts:
     autotools-configure-parameters:
       - --enable-notifications
     stage-packages:
-      - libcurl4t64
+      #- libcurl4t64
       - libphobos2-ldc-shared106
       - libgdk-pixbuf-2.0-0
       - libjpeg-turbo8

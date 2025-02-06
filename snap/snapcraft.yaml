@@ -29,19 +29,22 @@ apps:
 parts:
   curl:
     plugin: autotools
-    source-type: git
-    source: https://github.com/curl/curl
-    source-tag: 'curl-8_12_0'
-    source-depth: 1
-    build-packages:
-      - libssl-dev
-      - nghttp2
-      - libnghttp2-dev
-      - libpsl-dev
+    source: .
+    override-pull: |
+      wget $(wget -q -O - https://api.github.com/repos/curl/curl/releases/latest  |  jq -r '.assets[] | select(.name | contains ("gz")) | .browser_download_url' | grep -v 'asc') -O curl-src.tar.gz
+      tar zxf curl-src.tar.gz --strip-components=1
+      rm -f curl-src.tar.gz
     autotools-configure-parameters:
       - --with-openssl
       - --with-nghttp2
       - --enable-versioned-symbols
+    build-packages:
+      - wget
+      - jq
+      - libssl-dev
+      - nghttp2
+      - libnghttp2-dev
+      - libpsl-dev
     stage-packages:
       - libnghttp2-14
       - libpsl5t64

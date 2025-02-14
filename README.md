@@ -25,7 +25,7 @@ $ sudo snap install onedrive-cli
 
 ## Usage
 
-see: [Official Docs](https://github.com/abraunegg/onedrive/blob/master/docs/USAGE.md)
+see: [Official Docs](https://github.com/abraunegg/onedrive/blob/master/docs/usage.md)
 
 replace `onedrive` with `onedrive-cli`
 
@@ -38,7 +38,7 @@ Due to the packaging with Snap, the default paths are different.
 
 ## Enable Service (Running onedrive-cli in 'monitor' mode in background)
 
-[What is Monitor Mode?](https://github.com/abraunegg/onedrive/blob/master/docs/USAGE.md#running-onedrive-in-monitor-mode)
+[What is Monitor Mode?](https://github.com/abraunegg/onedrive/blob/master/docs/usage.md#ongoing-synchronisation-operational-mode-monitor-mode)
 
 ```bash
 $ mkdir -p ~/.config/systemd/user/

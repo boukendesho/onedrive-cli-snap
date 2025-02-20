@@ -31,7 +31,7 @@ parts:
     plugin: autotools
     source: .
     override-pull: |
-      wget $(wget -q -O - https://api.github.com/repos/curl/curl/releases/latest  |  jq -r '.assets[] | select(.name | contains ("gz")) | .browser_download_url' | grep -v 'asc') -O curl-src.tar.gz
+      wget $(wget -q -O - https://api.github.com/repos/curl/curl/releases/latest  |  jq -r '.assets[] | select(.name | endswith (".tar.gz")) | .browser_download_url') -O curl-src.tar.gz
       tar zxf curl-src.tar.gz --strip-components=1
       rm -f curl-src.tar.gz
     autotools-configure-parameters:

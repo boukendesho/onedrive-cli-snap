@@ -48,13 +48,13 @@ parts:
     stage-packages:
       - libnghttp2-14
       - libpsl5t64
-      
+
   onedrive:
     after: [curl]
     plugin: autotools
     source-type: git
     source: https://github.com/abraunegg/onedrive
-    source-tag: 'v2.5.4'
+    source-tag: 'v2.5.5'
     source-depth: 1
     build-packages:
       - ldc

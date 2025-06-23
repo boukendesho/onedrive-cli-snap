@@ -1,7 +1,8 @@
 ## onedrive-cli-snap
 [![onedrive-cli](https://snapcraft.io/onedrive-cli/badge.svg)](https://snapcraft.io/onedrive-cli)
 
-[Upstream Project Link](https://github.com/abraunegg/onedrive) 
+## Upstream
+[![onedrive](https://img.shields.io/github/v/release/abraunegg/onedrive?logo=github)](https://github.com/abraunegg/onedrive)
 
 A free Microsoft OneDrive Client which supports OneDrive Personal, OneDrive for Business, OneDrive for Office365 and SharePoint.
 

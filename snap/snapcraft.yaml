@@ -25,6 +25,9 @@ apps:
       - network
       - home
       - desktop
+      - desktop-legacy
+      - wayland
+      - x11
 
 parts:
   curl:
@@ -38,6 +41,8 @@ parts:
       - --with-openssl
       - --with-nghttp2
       - --enable-versioned-symbols
+      - --disable-static
+      - --disable-docs
     build-packages:
       - wget
       - jq
